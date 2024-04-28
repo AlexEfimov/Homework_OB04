@@ -22,14 +22,15 @@ class Monster:
             print(f"Монстр {self.name} побежден!")
         else:
             print(f"У Монстра {self.name}  осталось {self.stamina} жизни")
+        return
 
 
 class Bow(Weapon):
-    def __init__(self, damage=0):
+    def __init__(self, damage=15):
         super().__init__(damage)
 
     def attack(self):
-        print(f"Наносит удар из лука")
+        print("Наносит удар из лука")
 
 
 class Sword(Weapon):
@@ -37,7 +38,7 @@ class Sword(Weapon):
         super().__init__(damage)
 
     def attack(self):
-        print(f"Наносит удар мечом")
+        print("Наносит удар мечом")
 
 
 class Fighter:
@@ -49,5 +50,24 @@ class Fighter:
         self.weapon = new_weapon
 
     def fighter_attack(self, monster: Monster):
-        print(f"{self.name} {self.weapon.attack}")
+        print(f"{self.name} {self.weapon.attack()}")
         monster.take_damage(self.weapon.damage)
+
+
+bow = Bow()
+sword = Sword()
+fighter = Fighter("Леголас", bow)
+monster1 = Monster("Орк", 15)
+monster2 = Monster("Саруман", 150)
+
+fighter.fighter_attack(monster1)
+fighter.fighter_attack(monster2)
+fighter.change_weapon(sword)
+
+fighter.fighter_attack(monster2)
+fighter.fighter_attack(monster2)
+fighter.fighter_attack(monster2)
+fighter.fighter_attack(monster2)
+fighter.fighter_attack(monster2)
+fighter.fighter_attack(monster2)
+fighter.fighter_attack(monster2)
